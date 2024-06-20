@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Todo✅</title>
+
+  </head>
+  <body>
+    <div>
+      <h2>To-Do List</h2>
+      <div>
+        <form action="/" method="POST">
+          <input type="text" name="content">
+          <button type="submit">Add Task</button>
+        </form>
+        <div>
+            <ul>
+                <% todos.forEach(task => { %>
+                  <li class="todo-list-item">
+                    <%= task.content %>
+                    <input type="checkbox" <%= task.completed ? 'checked' : '' %> >
+                    <a href="/<%= task._id %>" value="<%= task.id %>" method="DELETE">
+                      <span>Delete</span>
+                    
+
+                    </a>
+                   
+                  </li>
+                  <form action="/edit-todo/<%= task._id %>" method="POST">
+                    <input type="text" name="content" value="<%= task.content %>">
+                    <button type="submit">Save Changes</button>
+                  </form>
+                <% }); %>
+              </ul>
+             
+
+  
+        </div>          
+      </div>
+    </div>
+  </body>
+</html>
